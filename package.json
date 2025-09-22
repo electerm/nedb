@@ -11,10 +11,10 @@
     "datastore",
     "embedded"
   ],
-  "homepage": "https://github.com/yetzt/nedb",
+  "homepage": "https://github.com/electerm/nedb",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/yetzt/nedb.git"
+    "url": "git+ssh://git@github.com/electerm/nedb.git"
   },
   "dependencies": {
     "@yetzt/binary-search-tree": "^0.2.6",
@@ -31,7 +31,8 @@
     "underscore": "^1.13.7"
   },
   "scripts": {
-    "test": "mocha --reporter spec --timeout 1000"
+    "test": "mocha --reporter spec --timeout 1000",
+    "pub": "npm publish --access public"
   },
   "files": [
     "lib/",
@@ -42,7 +43,7 @@
   "main": "index",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/yetzt/nedb/issues"
+    "url": "https://github.com/electerm/nedb/issues"
   },
   "directories": {
     "lib": "lib",
