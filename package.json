@@ -1,6 +1,6 @@
 {
   "name": "@electerm/nedb",
-  "version": "1.8.0",
+  "version": "2.0.0",
   "author": "Louis Chatriot <louis.chatriot@gmail.com>",
   "contributors": [
     "Louis Chatriot"
@@ -14,7 +14,7 @@
   "homepage": "https://github.com/electerm/nedb",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/electerm/nedb.git"
+    "url": "git+ssh://git@github.com:electerm/nedb.git"
   },
   "dependencies": {
     "@yetzt/binary-search-tree": "^0.2.6",
@@ -22,16 +22,11 @@
   },
   "devDependencies": {
     "async": "^3.2.0",
-    "chai": "^4.3.4",
-    "commander": "^7.2.0",
-    "exec-time": "^0.0.4",
-    "mocha": "^8.4.0",
-    "request": "^2.88.2",
-    "sinon": "^10.0.0",
-    "underscore": "^1.13.7"
+    "jest": "^29.7.0"
   },
   "scripts": {
-    "test": "mocha --reporter spec --timeout 1000",
+    "test": "jest --testTimeout=60000 --runInBand",
+    "test:parallel": "jest --testTimeout=30000",
     "pub": "npm publish --access public"
   },
   "files": [

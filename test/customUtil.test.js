@@ -1,26 +1,16 @@
-var should = require('chai').should()
-  , assert = require('chai').assert
-  , customUtils = require('../lib/customUtils')
-  , fs = require('fs')
-  ;
-
+var customUtils = require('../lib/customUtils');
 
 describe('customUtils', function () {
-
   describe('uid', function () {
-
     it('Generates a string of the expected length', function () {
-      customUtils.uid(3).length.should.equal(3);
-      customUtils.uid(16).length.should.equal(16);
-      customUtils.uid(42).length.should.equal(42);
-      customUtils.uid(1000).length.should.equal(1000);
+      expect(customUtils.uid(3).length).toBe(3);
+      expect(customUtils.uid(16).length).toBe(16);
+      expect(customUtils.uid(42).length).toBe(42);
+      expect(customUtils.uid(1000).length).toBe(1000);
     });
 
-    // Very small probability of conflict
     it('Generated uids should not be the same', function () {
-      customUtils.uid(56).should.not.equal(customUtils.uid(56));
+      expect(customUtils.uid(56)).not.toBe(customUtils.uid(56));
     });
-
   });
-
 });
