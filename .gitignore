@@ -21,3 +21,4 @@ browser-version/node_modules
 *.swp
 *~
 *.swo
+/temp
