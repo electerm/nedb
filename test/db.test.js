@@ -528,6 +528,7 @@ describe('Database', function () {
       await insertDoc(d, { a: 10, b: 20 });
       var docs = await findWithProjection(d, { a: 1 });
       expect(docs.length).toBe(2);
+      docs.sort((x, y) => x.a - y.a);
       expect(docs[0].a).toBe(5);
       expect(docs[0].b).toBeUndefined();
       expect(docs[1].a).toBe(10);
@@ -551,11 +552,11 @@ describe('Database', function () {
       });
     });
 
-    it.skip('Can skip results', function (done) {
+    it('Can skip results', function (done) {
       d.insert({ a: 5 }, function () {
         d.insert({ a: 10 }, function () {
           d.insert({ a: 15 }, function () {
-            d.find({}).skip(1).exec(function (err, docs) {
+            d.find({}).sort({ a: 1 }).skip(1).exec(function (err, docs) {
               if (err) { return done.fail(err); }
               expect(docs.length).toBe(2);
               expect(docs[0].a).toBe(10);
@@ -567,11 +568,11 @@ describe('Database', function () {
       });
     });
 
-    it.skip('Can limit results', function (done) {
+    it('Can limit results', function (done) {
       d.insert({ a: 5 }, function () {
         d.insert({ a: 10 }, function () {
           d.insert({ a: 15 }, function () {
-            d.find({}).limit(2).exec(function (err, docs) {
+            d.find({}).sort({ a: 1 }).limit(2).exec(function (err, docs) {
               if (err) { return done.fail(err); }
               expect(docs.length).toBe(2);
               expect(docs[0].a).toBe(5);

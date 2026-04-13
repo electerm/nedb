@@ -31,13 +31,13 @@ describe('Open file descriptors', function () {
     } catch (e) {}
   });
 
-  it.skip('can handle many open file descriptors', function (done) {
+  it('can handle many open file descriptors', function (done) {
     var i = 0;
     var fds = [];
 
     function multipleOpen(filename, count, callback) {
       async.whilst(
-        function () { return i < count; },
+        function (cb) { cb(null, i < count); },
         function (cb) {
           fs.open(filename, 'r', function (err, fd) {
             i++;
@@ -72,7 +72,7 @@ describe('Open file descriptors', function () {
       function (cb) {
         i = 0;
         async.whilst(
-          function () { return i < 2 * N + 1; },
+          function (wcb) { wcb(null, i < 2 * N + 1); },
           function (callback) {
             db.persistence.persistCachedDatabase(function (err) {
               i++;

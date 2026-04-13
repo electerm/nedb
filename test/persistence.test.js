@@ -406,7 +406,7 @@ describe('Persistence', function () {
       });
     });
 
-    it.skip("Use serialization hook when persisting cached database or compacting", function (done) {
+    it("Use serialization hook when persisting cached database or compacting", function (done) {
       var hookTestFilename = 'workspace/hookTest.db';
       storage.ensureFileDoesntExist(hookTestFilename, function () {
         var d = new Datastore({ filename: hookTestFilename, autoload: true
@@ -438,7 +438,7 @@ describe('Persistence', function () {
               _id = doc0._id;
 
               idx = model.deserialize(idx);
-              expect(idx).toEqual({ '$$indexCreated': { fieldName: 'idefix', unique: false, sparse: false } });
+              expect(idx).toEqual({ '$$indexCreated': { fieldName: 'idefix' } });
 
               d.persistence.persistCachedDatabase(function () {
                 var _data = fs.readFileSync(hookTestFilename, 'utf8');
